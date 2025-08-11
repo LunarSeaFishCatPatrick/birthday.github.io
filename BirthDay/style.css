@@ -1,0 +1,349 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  background-color: #3b4049;
+}
+
+.wrapper {
+  height: 270px;
+  width: 400px;
+  background-color: #3760c9;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  z-index: 0;
+  cursor: pointer;
+}
+
+.envelope1 {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Adjust border sizes based on new dimensions */
+.lid {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+
+  border-right: 200px solid transparent;
+  border-bottom: 135px solid transparent;
+  border-left: 200px solid transparent;
+  transform-origin: top;
+  transition: transform 0.25s linear;
+}
+
+.lid.one {
+  border-top: 135px solid #658ced;
+  transform: rotateX(0deg);
+  z-index: 3;
+  transition-delay: 0.75s;
+}
+
+.lid.two {
+  border-top: 135px solid #3760c9;
+  transform: rotateX(90deg);
+  z-index: 1;
+  transition-delay: 0.5s;
+}
+
+.envelope {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  border-top: 135px solid transparent;
+  border-right: 200px solid #c4dff0;
+  border-bottom: 135px solid #c4dff0;
+  border-left: 200px solid #a4d4f2;
+  z-index: 2;
+}
+
+.letter {
+  position: absolute;
+  top: 10;
+  width: 80%;
+  height: 75%;
+  background-color: white;
+  border-radius: 15px;
+  z-index: 2;
+
+  /* Start small and slightly below */
+  transform: translateY(20px) scale(1.1);
+  opacity: 0;
+
+  transition: transform 1s ease, opacity 0.5s ease;
+  transition-delay: 0s;
+}
+
+.letter p {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 30px;
+  color: #3b4049;
+}
+
+/* OPEN STATE - TRIGGERED ON CLICK */
+.wrapper.open .lid.one {
+  transform: rotateX(90deg);
+  transition-delay: 0s;
+}
+
+.wrapper.open .lid.two {
+  transform: rotateX(180deg);
+  transition-delay: 0.25s;
+}
+
+.wrapper.open .letter {
+  /* Phase 1: slide up */
+  transform: translateY(-50px) scale(1.1);
+  opacity: 1;
+  transition-delay: 0.75s;
+}
+
+.wrapper.open.scaled .letter {
+  margin-bottom: 75px;
+  transform: translateY(-50px) scale(4.3);
+  transition-delay: 0s;
+}
+.cake-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px; /* optional, to match your design */
+  object-fit: cover;
+  display: block;
+}
+
+.candles {
+  position: absolute;
+  top: 0;
+  left: 20%;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.candle {
+  position: absolute;
+  width: 10px;
+  height: 40px;
+  background: #f4f4f4;
+  border-radius: 3px;
+  box-shadow: inset 0 0 5px #ccc;
+  transform-origin: bottom center;
+}
+
+.flame {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  width: 8px;
+  height: 15px;
+  background: radial-gradient(circle at 50% 50%, yellow, orange, transparent);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  filter: drop-shadow(0 0 2px orange);
+  transform: translateX(-50%);
+  animation: flicker 1s infinite;
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.input-area {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+input#ageInput {
+  width: 120px;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  margin-bottom: 25px;
+  margin-top: 10px;
+}
+
+button#lightCandlesBtn {
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  background-color: #3760c9;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 25px;
+  margin-top: 10px;
+}
+.typewriter p {
+  overflow: hidden;
+  border-right: 0.15em solid #3760c9;
+  white-space: pre-wrap;
+  margin: 20px auto;
+  letter-spacing: 0.1em;
+  animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 20px;
+  color: #333;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #3760c9;
+  }
+}
+.letter-content {
+  transition: opacity 1s ease;
+}
+.typewriter {
+  white-space: pre-wrap;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 20px;
+  color: #333;
+  text-align: center;
+  padding: 20px;
+  line-height: 1.8;
+}
+
+.message-box {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 80%;
+  max-width: 600px;
+  z-index: 10;
+}
+.final-message {
+  background-color: white;
+  display: none;
+  border-radius: 50px;
+  height: 950px;
+  max-width: 1000px;
+  max-height: 1000px;
+
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+.final-message p {
+  color: black;
+  font-size: 50px;
+  width: 1000px;
+  height: 1000px;
+}
+@media (max-width: 600px) {
+  body {
+    padding: 0;
+    min-height: 100vh;
+    align-items: flex-start;
+  }
+
+  .wrapper {
+    width: 98vw;
+    height: 220px;
+    min-width: 0;
+    margin-top: 10px;
+  }
+
+  .letter {
+    width: 98vw;
+    height: 70%;
+    font-size: 15px;
+    left: 1vw;
+    border-radius: 10px;
+    padding: 8px;
+  }
+
+  .cake-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .input-area {
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 5px;
+  }
+
+  input#ageInput,
+  button#lightCandlesBtn {
+    width: 100%;
+    font-size: 15px;
+    margin-bottom: 10px;
+    margin-top: 0;
+  }
+
+  .final-message {
+    width: 98vw;
+    max-width: 98vw;
+    height: auto;
+    min-height: 180px;
+    border-radius: 16px;
+    padding: 10px 5px;
+    left: 1vw;
+    top: 55%;
+    transform: translateY(-50%);
+  }
+
+  .final-message p {
+    font-size: 20px;
+    width: 100%;
+    height: auto;
+    word-break: break-word;
+    padding: 0 2vw;
+  }
+
+  .sister-photo {
+    width: 90px;
+    top: 10px;
+    right: 10px;
+    border-radius: 8px;
+  }
+}

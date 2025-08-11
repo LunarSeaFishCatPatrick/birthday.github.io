@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/BirthDay/style.css" />
+  </head>
+  <body>
+    <div class="wrapper" id="wrapper">
+      <div class="envelope1" id="envelope1">
+        <div class="lid one"></div>
+        <div class="lid two"></div>
+        <div class="envelope"></div>
+      </div>
+
+      <div class="letter">
+        <div class="letter-content" id="letterContent">
+          <div class="cake-container">
+            <img src="/BirthDay/unnamed.png" alt="Cake" class="cake-image" />
+            <div class="candles"></div>
+          </div>
+          <div class="input-area">
+            <input
+              type="number"
+              id="ageInput"
+              placeholder="How old are you?"
+              min="1"
+              max="120" />
+            <button id="lightCandlesBtn">Blow the Candles</button>
+          </div>
+        </div>
+      </div>
+      <div class="final-message" id="finalMessage">
+        <p class="typewriter" id="typewriterText"></p>
+      </div>
+    </div>
+  </body>
+
+  <script src="/BirthDay/script.js"></script>
+</html>
